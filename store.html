@@ -6,13 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/" method="get">
-        <label for="term">Term:</label>
-        <input type="text" id="term" name="term"><br><br>
+    <form onsubmit="createItem(event)" method="post">
+        <label for="new-term">Term:</label>
+        <input type="text" id="new-term" name="new-term"><br><br>
         <label for="definition">Definition:</label>
         <input type="text" id="definition" name="definition"><br><br>
         <input type="submit" value="Submit">
       </form>
-      <a href="./store.html"><button>Search</button></a>
+      <div id="result">
+        No response yet!
+    </div>
+      <a href="./search.html"><button>Search</button></a>
+      <script src="app.js"></script>
 </body>
 </html>
