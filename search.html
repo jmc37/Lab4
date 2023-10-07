@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Store Page</title>
+    <script src="app.js"></script>
 </head>
 <body>
-    <form action="/" method="get">
-        <label for="term">Term:</label>
+    <form onsubmit="createItem(event)" method="post">
+        <label for="term">term:</label>
         <input type="text" id="term" name="term"><br><br>
-        <label for="definition">Definition:</label>
-        <input type="text" id="definition" name="definition"><br><br>
         <input type="submit" value="Submit">
       </form>
-      <a href="./store.html"><button>Search</button></a>
+    <div id="result">
+        No response yet!
+    </div>
+    <a href="./store.html"><button>Store</button></a>
 </body>
 </html>
