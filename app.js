@@ -2,7 +2,6 @@ const create_route = 'https://comp4537-lab4-hb0k.onrender.com/create'
 const search_route = 'https://comp4537-lab4-hb0k.onrender.com/search/?term='
 const alert_create = "Both term and definition must be valid strings (letters only)."
 const alert_get = "Term must be valid strings (letters only)."
-const http = require('http');
 
 function createItem(event) {
     event.preventDefault();
