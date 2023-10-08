@@ -1,6 +1,6 @@
-const create_route = process.env.create_route
-const search_route = process.env.search_route
-const page_redirect = process.env.page_redirect
+const create_route = process.env.CREATE_ROUTE
+const search_route = process.env.SEARCH_ROUTE
+const page_redirect = process.env.PAGE_REDIRECT
 const alert_create = "Both term and definition must be valid strings (letters only)."
 const alert_get = "Term must be valid strings (letters only)."
 const PORT = process.env.PORT || 8050;
