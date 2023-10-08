@@ -14,10 +14,7 @@ http.createServer(function (req, res) {
   
   // Handle the root URL ("/")
   if (pathname === '/') {
-    // You can send a default response here, e.g., an HTML page.
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('Welcome to the homepage!');
-    return;
+    pathname = '/store.html';
   }
   
   let filename = "." + q.pathname;
