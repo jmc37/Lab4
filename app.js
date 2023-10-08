@@ -1,5 +1,6 @@
 const create_route = 'http://localhost:8888/create'
 const search_route = 'http://localhost:8888/search/?term='
+
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
@@ -49,11 +50,15 @@ function createItem(event) {
     xhttp.open("POST", create_route, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(jsonData);
-    xhttp.onreadystatechange =function ()  {
-        if(this.readyState == 4 && this.status == 200){
-            document.getElementById("result").innerHTML = JSON.parse(this.responseText);
-        } 
-    }
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4) {
+          if (this.status == 201) {
+              document.getElementById("result").innerHTML = JSON.parse(this.responseText).result;
+          } else {
+              document.getElementById("result").innerHTML = JSON.parse(this.responseText).error;
+          }
+      }
+  }
 }
 
 function getItem(event) {
@@ -67,9 +72,13 @@ function getItem(event) {
     const xhttp = new XMLHttpRequest();
     xhttp.open("GET", `${search_route}`+`${term}`, true);
     xhttp.send();
-    xhttp.onreadystatechange =function ()  {
-        if(this.readyState == 4 && this.status == 200){
-            document.getElementById("result").innerHTML = JSON.parse(this.responseText);
-        } 
-    }
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4) {
+          if (this.status == 200) {
+              document.getElementById("result").innerHTML = JSON.parse(this.responseText).result;
+          } else {
+              document.getElementById("result").innerHTML = JSON.parse(this.responseText).error;
+          }
+      }
+  }
 }
