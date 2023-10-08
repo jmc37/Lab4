@@ -2,6 +2,7 @@ const create_route = 'https://comp4537-lab4-hb0k.onrender.com/create'
 const search_route = 'https://comp4537-lab4-hb0k.onrender.com/search/?term='
 const alert_create = "Both term and definition must be valid strings (letters only)."
 const alert_get = "Term must be valid strings (letters only)."
+const page_redirect = 'https://lab4-frontend.onrender.com/search.html'
 const PORT = process.env.PORT || 8050;
 const http = require('http');
 const url = require('url');
@@ -16,7 +17,7 @@ http.createServer(function (req, res) {
   if (pathname === '/') {
     // Redirect to search.html
     res.writeHead(302, {
-      'Location': 'https://lab4-frontend.onrender.com/search.html'
+      'Location': page_redirect
     });
     res.end();
     return;
@@ -66,9 +67,9 @@ function createItem(event) {
 }
 
 function getItem(event) {
-    let regex = /^[a-zA-Z]+$/;
     event.preventDefault();
-    let term = document.getElementById("search-term").value;
+    const regex = /^[a-zA-Z]+$/;
+    const term = document.getElementById("search-term").value;
     if (!regex.test(term)) {
       alert(alert_get);
       return;
