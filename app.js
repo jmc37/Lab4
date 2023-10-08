@@ -1,8 +1,8 @@
-const create_route = 'https://comp4537-lab4-hb0k.onrender.com/create'
-const search_route = 'https://comp4537-lab4-hb0k.onrender.com/search/?term='
+const create_route = process.env.create_route
+const search_route = process.env.search_route
+const page_redirect = process.env.page_redirect
 const alert_create = "Both term and definition must be valid strings (letters only)."
 const alert_get = "Term must be valid strings (letters only)."
-const page_redirect = 'https://lab4-frontend.onrender.com/search.html'
 const PORT = process.env.PORT || 8050;
 const http = require('http');
 const url = require('url');
