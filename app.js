@@ -1,7 +1,6 @@
 require('dotenv').config();
-const create_route = process.env.CREATE_ROUTE;
-const search_route = process.env.SEARCH_ROUTE;
-const page_redirect = process.env.PAGE_REDIRECT;
+const create_route = 'https://comp4537-lab4-hb0k.onrender.com/create'
+const search_route = 'https://comp4537-lab4-hb0k.onrender.com/search/?term='
 const alert_create = "Both term and definition must be valid strings (letters only)."
 const alert_get = "Term must be valid strings (letters only)."
 const http = require('http');
