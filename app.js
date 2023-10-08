@@ -1,5 +1,8 @@
 const create_route = 'https://comp4537-lab4-hb0k.onrender.com/create'
 const search_route = 'https://comp4537-lab4-hb0k.onrender.com/search/?term='
+const alert_create = "Both term and definition must be valid strings (letters only)."
+const alert_get = "Term must be valid strings (letters only)."
+const PORT = process.env.PORT || 8050;
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
@@ -27,7 +30,7 @@ http.createServer(function (req, res) {
     res.write(data);
     return res.end();
   });
-}).listen(8050);
+}).listen(PORT);
 
 function createItem(event) {
     event.preventDefault();
@@ -37,7 +40,7 @@ function createItem(event) {
     let definition = document.getElementById("definition").value;
 
     if (!regex.test(term) || !definitionRegex.test(definition)) {
-        alert("Both term and definition must be valid strings (letters only).");
+        alert(alert_create);
         return;
     } 
     let data = {
@@ -65,7 +68,7 @@ function getItem(event) {
     event.preventDefault();
     let term = document.getElementById("search-term").value;
     if (!regex.test(term)) {
-      alert("Term must be valid strings (letters only).");
+      alert(alert_get);
       return;
   }
     const xhttp = new XMLHttpRequest();
