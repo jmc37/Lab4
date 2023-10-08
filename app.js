@@ -1,4 +1,5 @@
 const create_route = 'http://localhost:8888/create'
+const search_route = 'http://localhost:8888/search/?term='
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
@@ -6,6 +7,16 @@ const fs = require('fs');
 
 http.createServer(function (req, res) {
   let q = url.parse(req.url, true);
+  let pathname = q.pathname;
+  
+  // Handle the root URL ("/")
+  if (pathname === '/') {
+    // You can send a default response here, e.g., an HTML page.
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end('Welcome to the homepage!');
+    return;
+  }
+  
   let filename = "." + q.pathname;
   fs.readFile(filename, function(err, data) {
     if (err) {
@@ -16,7 +27,7 @@ http.createServer(function (req, res) {
     res.write(data);
     return res.end();
   });
-}).listen(8080);
+}).listen(8050);
 
 function createItem(event) {
     event.preventDefault();
@@ -54,7 +65,7 @@ function getItem(event) {
       return;
   }
     const xhttp = new XMLHttpRequest();
-    xhttp.open("GET", `http://localhost:8888/search/?term=${term}`, true);
+    xhttp.open("GET", `${search_route}`+`${term}`, true);
     xhttp.send();
     xhttp.onreadystatechange =function ()  {
         if(this.readyState == 4 && this.status == 200){
