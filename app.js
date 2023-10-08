@@ -14,7 +14,12 @@ http.createServer(function (req, res) {
   
   // Handle the root URL ("/")
   if (pathname === '/') {
-    pathname = 'store.html';
+    // Redirect to search.html
+    res.writeHead(302, {
+      'Location': 'https://lab4-frontend.onrender.com/search.html'
+    });
+    res.end();
+    return;
   }
   
   let filename = "." + pathname;
