@@ -1,6 +1,5 @@
-const create_route = 'http://localhost:8888/create'
-const search_route = 'http://localhost:8888/search/?term='
-
+const create_route = 'https://comp4537-lab4-hb0k.onrender.com/create'
+const search_route = 'https://comp4537-lab4-hb0k.onrender.com/search/?term='
 const http = require('http');
 const url = require('url');
 const fs = require('fs');
@@ -47,7 +46,7 @@ function createItem(event) {
     }
     let jsonData = JSON.stringify(data)
     const xhttp = new XMLHttpRequest();
-    xhttp.open("POST", create_route, true);
+    xhttp.open("POST",create_route , true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(jsonData);
     xhttp.onreadystatechange = function () {
