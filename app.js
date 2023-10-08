@@ -14,10 +14,10 @@ http.createServer(function (req, res) {
   
   // Handle the root URL ("/")
   if (pathname === '/') {
-    pathname = '/store.html';
+    pathname = 'store.html';
   }
   
-  let filename = "." + q.pathname;
+  let filename = "." + pathname;
   fs.readFile(filename, function(err, data) {
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'});
